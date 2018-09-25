@@ -1,0 +1,15 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false # 因为eureka-server本身也是一个client，需要显示的表示自己是一个server
+    fetch-registry: false       # 通过eureka.client.register-with-eureka和*.fetch-registry=false来表明自己是一个server
+    service-url:
+      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring:
+  application:
+    name: eureka-server
